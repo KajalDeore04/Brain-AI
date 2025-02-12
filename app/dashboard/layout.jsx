@@ -13,10 +13,10 @@ function DashboardLayout({children}) {
             <SideBar/>
         </div>
         <div className='md:ml-64'>
-            <DashboardHeader/>
-            <div className='p-10'>
+            {/* <DashboardHeader/> */}
+            
             {children}
-            </div>            
+                       
         </div>
        </div>
        </CourseCountContext.Provider>

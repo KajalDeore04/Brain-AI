@@ -2,7 +2,7 @@
 import { CourseCountContext } from '@/app/_context/CourseCountContext'
 import { Button } from '@/components/ui/button'
 import { Progress } from '@/components/ui/progress'
-import { LayoutDashboard, Shield, UserCircle, Brain } from 'lucide-react'
+import { LayoutDashboard, Shield, UserCircle, Brain , FileText} from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -14,6 +14,11 @@ function SideBar() {
             name: 'AI Dashboard',
             icon: LayoutDashboard,
             path: '/dashboard'
+        },
+        {
+            name: 'Chat with PDF',
+            icon: FileText,
+            path: '/https://mini-project-ugln.onrender.com/'
         },
         {
             name: 'Upgrade Plan',

@@ -7,6 +7,13 @@ import Link from 'next/link'
 import React from 'react'
 
 function CourseCardItem({course}) {
+  // Format the creation date
+  const createdDate = new Date(course?.createdAt || Date.now()).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  });
+
   return (
     <div className='bg-white/10 border border-purple-500/30 rounded-xl p-6 
       hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300
@@ -26,7 +33,7 @@ function CourseCardItem({course}) {
             </div>
           </div>
           <h2 className='text-xs px-3 py-1 rounded-full bg-purple-400/20 border border-purple-300/30 text-purple-200'>
-            20 Dec 2024
+          {createdDate}
           </h2>
         </div>
         
@@ -38,14 +45,9 @@ function CourseCardItem({course}) {
           {course?.courseLayout?.course_summary}
         </p>
         
-        <div className='mt-4'>
-          <Progress 
-            value={0} 
-            className="h-1.5 bg-white/5"
-          />
-        </div>
         
-        <div className='mt-4 flex justify-end'>
+        
+        <div className='mt-4 flex justify-end items-end'>
           {course?.status == 'Generating' ? (
             <div className='text-sm px-3 py-1.5 flex gap-2 items-center rounded-full bg-white/10 text-white border border-white/20'>
               <RefreshCw className='h-4 w-4 animate-spin'/>

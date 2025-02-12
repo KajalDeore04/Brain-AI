@@ -4,9 +4,9 @@ import { ClerkProvider, SignedIn, SignedOut, UserProfile } from '@clerk/nextjs';
 const ProfilePage = ({ pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+      <div className="flex items-center justify-center min-h-screen bg-black">
         <SignedIn>
-          <div className="bg-white shadow-md rounded-lg p-6">
+          <div className="bg-black shadow-md rounded-lg">
             <UserProfile routing="hash" />
           </div>
         </SignedIn>
