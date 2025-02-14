@@ -1,7 +1,7 @@
-# KnowVo-AI 🚀  
+# Brain-AI-AI 🚀  
 **AI-Powered Learning Management System (LMS) SaaS Platform**  
 
-Welcome to **KnowVo-AI**, an advanced AI-powered Learning Management System (LMS) built to revolutionize how individuals and organizations learn, practice, and master skills. This platform leverages state-of-the-art technologies to provide personalized learning experiences, intelligent content creation, and adaptive assessments.  
+Welcome to **Brain-AI-AI**, an advanced AI-powered Learning Management System (LMS) built to revolutionize how individuals and organizations learn, practice, and master skills. This platform leverages state-of-the-art technologies to provide personalized learning experiences, intelligent content creation, and adaptive assessments.  
 
 ---
 
@@ -48,8 +48,8 @@ Welcome to **KnowVo-AI**, an advanced AI-powered Learning Management System (LMS
 
 1. **Clone the Repository**:  
    ```bash  
-   git clone https://github.com/Abhiman-Singh/KnowVo-AI.git  
-   cd KnowVo-AI  
+   git clone https://github.com/Abhiman-Singh/Brain-AI-AI.git  
+   cd Brain-AI-AI  
 
 
 
