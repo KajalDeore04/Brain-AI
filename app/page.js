@@ -20,7 +20,7 @@ export default function Home() {
       <nav className="relative p-5 flex justify-between items-center border-b border-purple-500/20 backdrop-blur-sm">
         <a href="/dashboard" className="flex gap-2 items-center">
           <Image alt="logo" width="30" height="30" src="/logo.svg" />
-          <h2 className="font-bold text-2xl bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Brain-AI AI</h2>
+          <h2 className="font-bold text-2xl bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text">Brain-AI</h2>
         </a>
         <div className="flex items-center gap-4">
           <UserButton afterSignOutUrl="/" />

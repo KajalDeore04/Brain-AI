@@ -8,31 +8,39 @@ import { RefreshCw, BookOpen } from 'lucide-react'
 import { CourseCountContext } from '@/app/_context/CourseCountContext'
 
 function CourseList() {
-    const { user } = useUser()
-    const [courseList, setCourseList] = useState([])
+    const { user } = useUser();
+    const [courseList, setCourseList] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const {totalCourse, setTotalCourse} = useContext(CourseCountContext);
-
+    const { totalCourse, setTotalCourse } = useContext(CourseCountContext);
+    
     const getCourseList = async () => {
+        if (!user) return; // Prevent API call if user is not available
+
         try {
-            setIsLoading(true)
+            setIsLoading(true);
             const { data } = await axios.post('/api/courses', {
                 createdBy: user?.primaryEmailAddress?.emailAddress
-            })
-            setCourseList(data.result)
-            setTotalCourse(data.result?.length);
+            });
+            setCourseList(data.result);
+            setTotalCourse(data.result?.length); // Update total courses
         } catch (error) {
-            console.error(error)
+            console.error(error);
         } finally {
-            setIsLoading(false)
+            setIsLoading(false);
         }
-    }
+    };
 
+    // Fetch courses when user loads the page
+    useEffect(() => {
+        getCourseList();
+    }, [user]);
+
+    // Fetch courses again when a new course is created (detected via totalCourse change)
     useEffect(() => {
         if (user) {
-            getCourseList()
+            getCourseList();
         }
-    }, [user])
+    }, [totalCourse]); // Runs only when totalCourse updates
 
     return (
         <div className="mt-10">
@@ -67,7 +75,7 @@ function CourseList() {
                 )}
             </div>
         </div>
-    )
+    );
 }
 
-export default CourseList
+export default CourseList;

@@ -40,7 +40,7 @@ function SideBar() {
             <div className='flex gap-3 items-center'>
                 <Image src={'/logo.svg'} alt='logo' width={40} height={40} />
                 <h2 className='font-bold text-2xl bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text'>
-                    Brain-AI AI
+                    Brain-AI
                 </h2>
             </div>
 
