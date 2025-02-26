@@ -16,11 +16,6 @@ function SideBar() {
             path: '/dashboard'
         },
         {
-            name: 'Chat with PDF',
-            icon: FileText,
-            path: 'https://mini-project-ugln.onrender.com/'
-        },
-        {
             name: 'Upgrade Plan',
             icon: Shield,
             path: '/dashboard/upgrade'

@@ -13,7 +13,7 @@ function DashboardLayout({children}) {
             <SideBar/>
         </div>
         <div className='md:ml-64'>
-            {/* <DashboardHeader/> */}
+            <DashboardHeader/> 
             
             {children}
                        
