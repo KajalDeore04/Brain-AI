@@ -9,6 +9,7 @@ import ChapterList from './_components/ChapterList';
 import { Button } from '@/components/ui/button';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Download } from 'lucide-react';
 
 function Course() {
     const { courseId } = useParams();
@@ -71,16 +72,17 @@ function Course() {
 
             {/* Study Materials Options */}
             <StudyMaterialSection courseId={courseId} course={course} />
+            <div className="mt-6 flex justify-center">
+                <Button onClick={downloadPDF} >
+                <Download /> Download All Notes as PDF
+                </Button>
+            </div>
 
             {/* Chapter List */}
             <ChapterList course={course} />
 
             {/* Download Notes Button */}
-            <div className="mt-6 flex justify-center">
-                <Button onClick={downloadPDF} variant="outline">
-                    Download All Notes as PDF
-                </Button>
-            </div>
+            
         </div>
     );
 }
