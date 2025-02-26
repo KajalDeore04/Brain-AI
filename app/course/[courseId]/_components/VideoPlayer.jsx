@@ -12,9 +12,10 @@ const VideoPlayer = ({ videoId }) => {
 
   return (
     <div className="flex justify-center my-6">
-      {videoId ? (
+      {videoId ? <div className="font-medium text-2xl">
+        <p className="my-4">Video suggested for you 👇🏻</p>
         <YouTube videoId={videoId} opts={opts} />
-      ) : (
+      </div> : (
         <p>No video available for this course.</p>
       )}
     </div>

@@ -1,5 +1,6 @@
 "use client";
 import DashboardHeader from "@/app/dashboard/_components/DashboardHeader";
+import { Loader2 } from "lucide-react"
 import axios from "axios";
 import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -21,6 +22,7 @@ function Course({ content }) {
   const [course, setCourse] = useState();
   const [notes, setNotes] = useState([]);
   const [videoId, setVideoId] = useState(""); // State to store the video ID
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     GetCourse();
@@ -77,6 +79,7 @@ function Course({ content }) {
 
   const downloadPDF = async () => {
     if (!notes.length) return alert("No notes available to download!");
+    setLoading(true); // Start loading
 
     const pdf = new jsPDF("p", "mm", "a4");
     let pageAdded = false;
@@ -106,6 +109,7 @@ function Course({ content }) {
     }
 
     pdf.save(`all_notes_${courseId}.pdf`);
+    setLoading(false); // Stop loading
   };
 
   return (
@@ -114,12 +118,19 @@ function Course({ content }) {
       <CourseIntroCard course={course} />
 
       {/* Study Materials Options */}
-      <StudyMaterialSection courseId={courseId} course={course} />
       <div className="mt-6 flex justify-center">
-        <Button onClick={downloadPDF}>
-          <Download /> Download All Notes as PDF
-        </Button>
-      </div>
+  {loading ? (
+    <Button disabled>
+    <Loader2 className="animate-spin" />
+    Please wait
+  </Button>
+  ) : (
+    <Button onClick={downloadPDF}>
+      <Download /> Download All Notes as PDF
+    </Button>
+  )}
+</div>
+      <StudyMaterialSection courseId={courseId} course={course} />
 
       {/* Video */}
       <VideoPlayer videoId={videoId} />
