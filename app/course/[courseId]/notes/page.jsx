@@ -1,59 +1,84 @@
-'use client'
+'use client';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
 import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function ViewNotes() {
   const { courseId } = useParams();
   const [notes, setNotes] = useState();
   const [stepCount, setStepCount] = useState(0);
-  const route=useRouter();
+  const route = useRouter();
 
   useEffect(() => {
     GetNotes();
   }, []);
 
   const GetNotes = async () => {
-    
-      const result = await axios.post('/api/study-type', {
-        courseId: courseId,
-        studyType: 'notes'
-      });
-      setNotes(result.data);
-    
+    const result = await axios.post('/api/study-type', {
+      courseId: courseId,
+      studyType: 'notes'
+    });
+    setNotes(result.data);
   };
 
+  const downloadPDF = async () => {
+    const content = document.getElementById('notes-content');
+    if (!content) return;
 
+    const canvas = await html2canvas(content);
+    const imgData = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgWidth = 190; 
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', 10, 10, imgWidth, imgHeight);
+    pdf.save(`notes_${courseId}.pdf`);
+  };
 
   return notes && (
     <div className="p-6 max-w-4xl mx-auto">
-        <div className='flex gap-2 items-center mb-6'>
-            {stepCount != 0 && <Button variant='outline' size='sm' onClick={() => setStepCount(stepCount - 1)}>Previous</Button>}
-          {notes?.map((item, index) => (
+      <div className='flex gap-2 items-center mb-6'>
+        {stepCount !== 0 && (
+          <Button variant='outline' size='sm' onClick={() => setStepCount(stepCount - 1)}>
+            Previous
+          </Button>
+        )}
+        {notes?.map((item, index) => (
           <div 
             key={index} 
             className={`w-full h-2 rounded-full ${index < stepCount ? 'bg-primary' : 'bg-gray-200'}`}
           />
-          ))}
-          
-          <Button variant='outline' size='sm' onClick={() => setStepCount(stepCount + 1)}  disabled={stepCount >= notes.length}>
-            Next
-          </Button>
-        </div>
+        ))}
+        <Button variant='outline' size='sm' onClick={() => setStepCount(stepCount + 1)} disabled={stepCount >= notes.length}>
+          Next
+        </Button>
+      </div>
 
       <div className="prose prose-lg max-w-none">
         <div 
+          id="notes-content"
           className="notes-content"
           dangerouslySetInnerHTML={{ 
             __html: (notes[stepCount]?.notes || '').replace('```html', ' ').replace('```',' ')
           }}
         />
-        {notes?.length==stepCount&&<div className='flex items-center gap-10 flex-col justify-center'>
+        {notes?.length === stepCount && (
+          <div className='flex items-center gap-10 flex-col justify-center'>
             <h2>End of Notes</h2>
-            <Button onClick={()=>route.back(    )}>Go to Course Page</Button>
-                </div>}
-                
+            <Button onClick={() => route.back()}>Go to Course Page</Button>
+          </div>
+        )}
+      </div>
+
+      {/* Download Button */}
+      <div className="mt-6 flex justify-center">
+        <Button onClick={downloadPDF} variant="outline">
+          Download as PDF
+        </Button>
       </div>
 
       <style jsx global>{`
