@@ -105,7 +105,7 @@ function Create() {
             </main>
 
             <footer className='mt-16 w-full py-4 bg-gradient-to-r from-gray-900 to-gray-800 text-center text-sm text-gray-400'>
-                <p>&copy; 2024 AI Learning Platform. All Rights Reserved.</p>
+                <p>&copy; 2025 AI Learning Platform. All Rights Reserved.</p>
             </footer>
         </div>
     );

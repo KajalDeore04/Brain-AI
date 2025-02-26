@@ -81,7 +81,7 @@ function Course() {
             {/* Chapter List */}
             <ChapterList course={course} />
 
-            {/* Download Notes Button */}
+            
             
         </div>
     );
