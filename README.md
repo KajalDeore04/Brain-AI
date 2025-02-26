@@ -1,4 +1,4 @@
-# Brain-AI-AI 🚀  
+# Brain-AI 🚀  
 **AI-Powered Learning Management System (LMS) SaaS Platform**  
 
 Welcome to **Brain-AI-AI**, an advanced AI-powered Learning Management System (LMS) built to revolutionize how individuals and organizations learn, practice, and master skills. This platform leverages state-of-the-art technologies to provide personalized learning experiences, intelligent content creation, and adaptive assessments.  
