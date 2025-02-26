@@ -4,6 +4,7 @@ import {Outfit} from 'next/font/google'
 import { ClerkProvider } from "@clerk/nextjs";
 import Provider from "./provider";
 import { Toaster } from "@/components/ui/sonner";
+import { dark, shadesOfPurple } from "@clerk/themes";
 
 
 export const metadata = {
@@ -14,7 +15,9 @@ export const metadata = {
 const outfit=Outfit({subsets:['latin']});
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider appearance={{
+      baseTheme: dark,
+    }}>
     <html lang="en"  suppressHydrationWarning>
       <body
         className={outfit.className}
