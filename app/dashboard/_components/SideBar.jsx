@@ -32,12 +32,14 @@ function SideBar() {
     return (
         <div className='h-screen bg-gradient-to-b from-black via-purple-950 to-black p-6 text-white relative'>
             {/* Logo Section */}
+                <Link href={'/'}>
             <div className='flex gap-3 items-center'>
                 <Image src={'/logo.svg'} alt='logo' width={40} height={40} />
                 <h2 className='font-bold text-2xl bg-gradient-to-r from-purple-400 to-blue-400 inline-block text-transparent bg-clip-text'>
                     Brain-AI
                 </h2>
             </div>
+            </Link>
 
             {/* Create New Button */}
             <div className='mt-10'>

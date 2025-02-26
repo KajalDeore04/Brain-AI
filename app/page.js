@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-purple-950 to-black text-white">
       {/* Animated Background */}
-      <div className="absolute inset-0 bg-[url('/grid.svg')] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
+      <div className="absolute inset-0  bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]" />
 
       {/* Navigation */}
       <nav className="relative p-5 flex justify-between items-center border-b border-purple-500/20 backdrop-blur-sm">
