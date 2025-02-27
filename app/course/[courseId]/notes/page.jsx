@@ -5,6 +5,7 @@ import { useParams, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Download } from 'lucide-react';
 
 function ViewNotes() {
   const { courseId } = useParams();
@@ -58,6 +59,13 @@ function ViewNotes() {
         </Button>
       </div>
 
+       {/* Download Button */}
+       <div className="flex justify-end">
+        <Button onClick={downloadPDF} >
+         <Download/> Download as PDF
+        </Button>
+      </div>
+
       <div className="prose prose-lg max-w-none">
         <div 
           id="notes-content"
@@ -74,41 +82,49 @@ function ViewNotes() {
         )}
       </div>
 
-      {/* Download Button */}
-      <div className="mt-6 flex justify-center">
-        <Button onClick={downloadPDF} variant="outline">
-          Download as PDF
-        </Button>
-      </div>
+     
 
       <style jsx global>{`
-        .notes-content h2 {
-          font-size: 1.875rem;
-          font-weight: 600;
-          margin-bottom: 1rem;
-          color: #1a1a1a;
-        }
-        .notes-content h3 {
-          font-size: 1.5rem;
-          font-weight: 600;
-          margin: 1.5rem 0 1rem;
-          color: #2a2a2a;
-        }
-        .notes-content p {
-          margin: 1rem 0;
-          line-height: 1.6;
-        }
-        .notes-content ul {
-          margin: 1rem 0;
-          padding-left: 1.5rem;
-        }
-        .notes-content li {
-          margin: 0.5rem 0;
-        }
-        .notes-content strong {
-          color: #4a4a4a;
-        }
-      `}</style>
+  .notes-content h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+    color: #2563eb; /* Blue */
+    text-decoration: underline;
+  }
+  .notes-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+    color: #92400e; /* Yellow-800 */
+  }
+  .notes-content p {
+    margin: 1rem 0;
+    line-height: 1.8;
+    color: #4b5563; /* Gray-600 */
+  }
+  .notes-content ul {
+    margin: 1rem 0;
+    padding-left: 2rem;
+    list-style-type: disc; /* Dots for list */
+    color: #1f2937; /* Gray-800 */
+  }
+  .notes-content li {
+    margin: 0.5rem 0;
+  }
+  .notes-content strong {
+    color: #f59e0b; /* Amber */
+    font-weight: 700;
+  }
+  .notes-content code {
+    background-color: #f3f4f6; /* Light gray */
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    color: #d97706; /* Amber-700 */
+    font-family: 'Courier New', monospace;
+  }
+`}</style>
+
     </div>
   );
 }
