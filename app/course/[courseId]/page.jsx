@@ -30,8 +30,8 @@ function Course({ content }) {
 
   useEffect(() => {
     if (course) {
-      GetNotes();
       GetVideo(); // Fetch video when course data is available
+      GetNotes();
     }
   }, [course]);
 
@@ -79,7 +79,6 @@ function Course({ content }) {
 
   const downloadPDF = async () => {
     if (!notes.length) return alert("No notes available to download!");
-    setLoading(true); // Start loading
 
     const pdf = new jsPDF("p", "mm", "a4");
     let pageAdded = false;
@@ -109,7 +108,6 @@ function Course({ content }) {
     }
 
     pdf.save(`all_notes_${courseId}.pdf`);
-    setLoading(false); // Stop loading
   };
 
   return (
